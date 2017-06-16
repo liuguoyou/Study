@@ -27,9 +27,9 @@ In Residual-Net, bottleneck structure has benn proposed.
 
 ## Binary Convolutional Neural Network
 
-$L$-layer CNN architecture: $<\mathit{I}, \mathit{W}, *>$
+$L$-layer CNN architecture: $ <\mathit{I}, \mathit{W}, * > $
 
-$I = \mathit{I}_{l(l=1,\dots,L)}$ is the input tensor for the $l^{\mathrm{th}}$ layer of CNN.
+$I = \mathit{I} _ {l(l=1,\dots,L)}$ is the input tensor for the $l^{\mathrm{th}}$ layer of CNN.
 
 ## Binary-Weight-Networks
 
