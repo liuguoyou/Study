@@ -1,30 +1,41 @@
+" 配置变更立即生效
+" autocmd BufWritePost $MYVIMRC source $MYVIMRC
 """""""""""""""""""""""""""""""""""""""""""""""""
 "显示
 """""""""""""""""""""""""""""""""""""""""""""""""
+syntax enable
 syntax on								"语法高亮
 autocmd InsertLeave * se nocul			"用浅色高亮当前行
 autocmd InsertEnter * se nocul			"用浅色高亮当前行(cul带下划线)
 set number								"行号
-set ruler								"显示标尺
+set ruler						  		"显示光标当前位置
 set confirm								"处理未保存或只读文件是弹出确认
 set autoread							"文件改变时，自动载入
 "set nobackup							"无备份
 set autowrite
 "set cursorline							"突出显示当前行(下划线)
-set foldenable							"允许折叠
-set foldmethod=manual					"手动折叠
+"""折叠"""
+set nofoldenable            " 启动 vim 时关闭所有折叠
+" set foldenable						"允许折叠
+" set foldmethod=manual			"手动折叠
+" set foldmethod=indent     "基于缩进进行代码折叠
+set foldmethod=syntax				"基于语法进行折叠
 set foldcolumn=0
-set foldlevel=3
-set background=dark						"黑色背景
+" set foldlevel=3
 set nocompatible						"去掉vi一致性模式
 "set lines=40 columns=155				"设置窗口大小
 set magic
-set clipboard+=unnamed					"共享剪贴板
-"colorscheme=murphy						"配色方案
-"colorscheme=torte						"配色方案
-"colorscheme=desert						"配色方案
-"colorscheme=elflord					"配色方案
-"colorscheme=ron						"配色方案
+set clipboard+=unnamed				"共享剪贴板
+"配色方案
+set background=dark						"黑色背景
+"colorscheme murphy
+"colorscheme torte
+"colorscheme desert
+"colorscheme elflord
+"colorscheme ron
+"colorscheme solarized        " 素雅 https://github.com/altercation/vim-colors-solarized 
+"colorscheme molokai          " 多彩 https://github.com/tomasr/molokai
+"colorscheme phd              " 复古 http://www.vim.org/scripts/script.php?script_id=3139
 """字符编码"""
 set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
 set enc=utf-8
@@ -38,6 +49,9 @@ set langmenu=zh_CN.UTF-8
 set showcmd								"显示输入的命令
 set cmdheight=1							"命令行高度为1
 set laststatus=2						"启动显示状态行(1),总是显示(2)
+" 高亮显示当前行列
+set cursorline
+" set cursorcolumn
 """缩进"""
 set autoindent
 set cindent
@@ -65,15 +79,14 @@ set selectmode=mouse,key
 set showmatch							"高亮显示匹配的括号
 set matchtime=1							"匹配括号高亮时间(单位0.1s)
 set ignorecase							"搜索忽略大小写
-"set hlsearch							"搜索字符高亮
+set hlsearch							"搜索字符高亮
+"开启实时搜索功能
 set incsearch
 set gdefault							"行内替换
 
 "自动跳转到上次退出的位置
-"Uncomment the following to have Vim jump to the last position when reopening a file
 if has("autocmd")
- au BufReadPost * if line("`\"") > 1 && line("`\"") <= line("$") | exe normal! g`\"" | endif
-" for simplicity, "  au BufReadPost * exe "normal! g`\"", is Okay.
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""
